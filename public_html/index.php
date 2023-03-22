@@ -40,7 +40,7 @@ $products = Product::getProducts();
 
                 <td>
                     <div class="product">
-                        <input type="checkbox" class="delete-checkbox" value="<?php echo $products[$i]['sku'] ?>">
+                        <input type="checkbox" class="delete-checkbox" value='<?php echo json_encode($products[$i]) ?>'>
                         <p>
                             <?php echo $products[$i]['sku'] ?>
                         </p>
