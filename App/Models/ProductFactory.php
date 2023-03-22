@@ -10,12 +10,15 @@ class ProductFactory
 
     ];
 
+    //this method generates a product based on it's product type.
     public static function GenerateProduct($sku, $name, $price, $product_type, $attributes)
     {
         $product = self::$productMap[$product_type];
         return new $product($sku, $name, $price, ...array_values($attributes));
     }
 
+
+    //this method saves the product to the database.
     public static function Save($product)
     {
 
@@ -39,6 +42,7 @@ class ProductFactory
 
     }
 
+    //This method receives a product object and deletes it based on the SKU.
     public static function Delete($product)
     {
         $conn = \Module\Connection::getConnection();
@@ -52,6 +56,9 @@ class ProductFactory
         $stmt->execute();
     }
 
+    
+    
+    // This method will transform a StdClass instance from a product into it's respective product.
     public static function PrepareProduct($product)
     {
         unset($product->ID);
